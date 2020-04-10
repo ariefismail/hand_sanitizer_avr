@@ -14,8 +14,8 @@
 
 // lcd related
 #define PIN_RS &PINC,0
-#define PIN_EN &PINC,1
-#define PIN_RW &PINC,2
+#define PIN_RW &PINC,1
+#define PIN_EN &PINC,2
 #define PIN_DT4 &PINC,4
 #define PIN_DT5 &PINC,5
 #define PIN_DT6 &PINC,6

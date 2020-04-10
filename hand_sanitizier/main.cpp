@@ -42,6 +42,10 @@ int main(void)
     };   
     CLcd lcd;
     lcd.Init(&pRs,&pEn,&pRw,pDt);
+    lcd.On();
+    lcd.ReturnHome();
+    lcd.Clear();
+    lcd.Lprintf("haha");
     while (1) 
     {
         heartBeat.Execute();
