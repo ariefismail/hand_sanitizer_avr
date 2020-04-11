@@ -48,6 +48,7 @@ int main(void)
     lcd.Clear();
     lcd.Lprintf("haha");
     
+    // pwm servo init
     CAvrGpio pwmB;
     pwmB.Init(&PIND,4,1);
     CAvrPwm pwm;
@@ -55,10 +56,32 @@ int main(void)
     pwm.SetTop(2500);
     pwm.Enable();
     pwm.EnableChannel(1);
-    pwm.Set(1,250);
+    
+    // srf04 init
+    CAvrGpio sr04Echo;
+    CAvrGpio sr04Trigger;
+    sr04Echo.Init(&PINA,0,1);
+    sr04Trigger.Init(&PINA,1,0);
+    sr04Echo.Clear();
+    uint16_t i = 0;
     while (1) 
     {
-        //heartBeat.Execute();
+        sr04Echo.Clear();
+        _delay_us(5);
+        sr04Echo.Set();
+        _delay_us(10);
+        sr04Echo.Clear();
+        i=0;
+        while(sr04Trigger.Get() && (i<620))
+        {
+            _delay_us(58);
+            i++;    
+        }
+        _delay_ms(10); // allow 10ms from end echo to next trigger
+        
+        lcd.Clear();
+        lcd.Lprintf("%d",i);
+        
     }
 }
 

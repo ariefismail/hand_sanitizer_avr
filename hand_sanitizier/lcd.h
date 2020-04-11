@@ -77,8 +77,8 @@ class CLcd{
 
     void SetCursor(uint8_t col, uint8_t row);
 
-    void Lputs(char *string);
-    void Lprintf(char *format, ...);
+    void Lputs(const char *string);
+    void Lprintf(const char *format, ...);
     
     public:
     CLcd(){};

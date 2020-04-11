@@ -173,14 +173,14 @@ void CLcd::SetCursor(uint8_t col, uint8_t row)
     Command(LCD_SETDDRAMADDR | (col + offsets[row]));
 }
 
-void CLcd::Lputs(char *string)
+void CLcd::Lputs(const char *string)
 {
-    for (char *it = string; *it; it++) {
+    for (const char *it = string; *it; it++) {
         Write(*it);
     }
 }
 
-void CLcd::Lprintf(char *format, ...)
+void CLcd::Lprintf(const char *format, ...)
 {
     va_list args;
 
