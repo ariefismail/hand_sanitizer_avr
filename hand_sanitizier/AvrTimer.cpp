@@ -10,7 +10,8 @@
 
 void CAvrTimer::Init(avrPrescaler prescaler)
 {
-	TCCR1B=(uint8_t)prescaler;
+    TCCR1B&=~(7);
+	TCCR1B|=((uint8_t)prescaler & 7);
 }
 
 uint16_t CAvrTimer::GetTick()

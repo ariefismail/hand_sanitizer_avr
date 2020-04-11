@@ -4,6 +4,8 @@
 
 AvrGpio.cpp
 
+AvrPwm.cpp
+
 AvrSpi.cpp
 
 AvrTimer.cpp

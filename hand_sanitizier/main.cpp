@@ -8,6 +8,7 @@
 #include <util/delay.h>
 #include <avr/io.h>
 #include "AvrGpio.h"
+#include "AvrPwm.h"
 #include "HeartBeat.h"
 #include "PinMapping.h"
 #include "lcd.h"
@@ -16,12 +17,12 @@
 int main(void)
 {
 	// heartbeat init
-	CHeartBeat heartBeat;
-	CAvrGpio led;
-	CAvrTimer timer;
-	led.Init(PIN_HEARTBEAT,1);
-	timer.Init(CAvrTimer::psc256);
-	heartBeat.Init(&led,&timer,30000);
+	//CHeartBeat heartBeat;
+	//CAvrGpio led;
+	//CAvrTimer timer;
+	//led.Init(PIN_HEARTBEAT,1);
+	//timer.Init(CAvrTimer::psc256);
+	//heartBeat.Init(&led,&timer,30000);
     
     // lcd init
     CAvrGpio pRs;
@@ -46,9 +47,18 @@ int main(void)
     lcd.ReturnHome();
     lcd.Clear();
     lcd.Lprintf("haha");
+    
+    CAvrGpio pwmB;
+    pwmB.Init(&PIND,4,1);
+    CAvrPwm pwm;
+    pwm.Init(CAvrTimer::psc64);
+    pwm.SetTop(2500);
+    pwm.Enable();
+    pwm.EnableChannel(1);
+    pwm.Set(1,250);
     while (1) 
     {
-        heartBeat.Execute();
+        //heartBeat.Execute();
     }
 }
 

@@ -159,6 +159,12 @@
     <Compile Include="AvrGpio.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="AvrPwm.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="AvrPwm.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="AvrSpi.cpp">
       <SubType>compile</SubType>
     </Compile>
